@@ -1,5 +1,7 @@
 <template>
-    <h1>test</h1>
+    <div>
+        <h1 class="text-6xl">Clientes</h1>
+    </div>
 </template>
 
 <script setup>
