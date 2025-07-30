@@ -5,6 +5,11 @@ const routes = [
         path: '/',
         name: 'Listado de Clientes',
         component: () => import('../views/ClientesView.vue'),
+    },
+    {
+        path: '/agregarCliente',
+        name: 'Agregar Cliente',
+        component: () => import('../views/NuevoClienteView.vue'),
     }
 ]
 
