@@ -3,12 +3,12 @@ import { createRouter, createWebHistory } from 'vue-router';
 const routes = [
     {
         path: '/',
-        name: 'Listado de Clientes',
+        name: 'inicio',
         component: () => import('../views/ClientesView.vue'),
     },
     {
-        path: '/agregarCliente',
-        name: 'Agregar Cliente',
+        path: '/agregar-cliente',
+        name: 'agregar-cliente',
         component: () => import('../views/NuevoClienteView.vue'),
     }
 ]
