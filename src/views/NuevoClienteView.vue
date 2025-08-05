@@ -8,19 +8,20 @@
 
         <div class="mx-auto mt-10 bg-white shadow">
             <div class="mx-auto md:w-2/3 py-20 px-6">
-                <FormKit type="form" submit-label="Agregar Cliente">
-                    <FormKit type="text" label="Nombre" placeholder="Nombre de cliente" validation="required"
+                <FormKit type="form" submit-label="Agregar Cliente" @submit="handleSubmit">
+                    <FormKit type="text" label="Nombre" name="nombre" placeholder="Nombre de cliente" validation="required"
                     :validation-messages="{ required: 'El Nombre del cliente es obligatorio'}"/>
-                    <FormKit type="text" label="Apellido" placeholder="Apellido de cliente" validation="required"
+                    <FormKit type="text" label="Apellido" name="apellido" placeholder="Apellido de cliente" validation="required"
                     :validation-messages="{ required: 'El Apellido del cliente es obligatorio'}"/>
-                    <FormKit type="email" label="Email" placeholder="Email de cliente" validation="required|email"
+                    <FormKit type="email" label="Email" name="email" placeholder="Email de cliente" validation="required|email"
                     :validation-messages="{ required: 'El Email del cliente es obligatorio', email: 'Coloca un email válido'}"/>
-                    <FormKit type="text" label="Teléfono" placeholder="Teléfono: XXX-XXX-XXX" validation="?matches:/^[0-9]{3}-[0-9]{3}-[0-9]{3}$/"
-                    :validation-messages="{ matches: 'El formato no es válido'}"/>
+                    <FormKit type="text" label="Teléfono" name="telefono" placeholder="Teléfono: XXX-XXX-XXX"/>
+                    <!-- <FormKit type="text" label="Teléfono" name="telefono" placeholder="Teléfono: XXX-XXX-XXX" validation="?matches:/^[0-9]{3}-[0-9]{3}-[0-9]{3}$/"
+                    :validation-messages="{ matches: 'El formato no es válido'}"/> -->
 
                     
-                    <FormKit type="text" label="Empresa" placeholder="Empresa de cliente" />
-                    <FormKit type="text" label="Puesto" placeholder="Puesto de cliente" />
+                    <FormKit type="text" label="Empresa" name="empresa" placeholder="Empresa de cliente" />
+                    <FormKit type="text" label="Puesto" name="puesto" placeholder="Puesto de cliente" />
                 </FormKit>
             </div>
         </div>
@@ -37,6 +38,10 @@
             type: String,
         }
     });
+
+    const handleSubmit = (data) => {
+        console.log('Cliente agregado:', data);
+    }
 </script>
 
 <style>
