@@ -12,6 +12,7 @@
     "@formkit/i18n": "^1.6.9",
     "@formkit/themes": "^1.6.9",
     "@formkit/vue": "^1.6.9",
+    "axios": "^1.11.0",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1"
   },
