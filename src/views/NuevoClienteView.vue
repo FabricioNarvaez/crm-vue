@@ -29,9 +29,13 @@
 </template>
 
 <script setup>
+    import { FormKit }  from '@formkit/vue';
+    import axios from 'axios';
+    import { useRouter } from 'vue-router';
     import RouterLink from '../components/UI/RouterLink.vue';
     import Heading from '../components/UI/Heading.vue';
-    import { FormKit }  from '@formkit/vue';
+
+    const router = useRouter();
 
     defineProps({
         titulo: {
@@ -40,7 +44,14 @@
     });
 
     const handleSubmit = (data) => {
-        console.log('Cliente agregado:', data);
+        const Api_URL = import.meta.env.VITE_API_URL;
+        axios.post(`${Api_URL}/clientes`, data)
+            .then(respuesta => {
+                router.push({ name: 'inicio' });
+            })
+            .catch(error => {
+                console.error('Error al agregar el cliente:', error);
+            });
     }
 </script>
 
