@@ -44,6 +44,7 @@
     });
 
     const handleSubmit = (cliente) => {
+        cliente.estado = 1;
         ClienteService.agregarCliente(cliente)
             .then(respuesta => {
                 router.push({ name: 'inicio' });
