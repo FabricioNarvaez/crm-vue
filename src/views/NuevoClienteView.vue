@@ -29,7 +29,7 @@
 </template>
 
 <script setup>
-    import axios from '../lib/axios';
+    import ClienteService from '../services/ClienteService';
     import { FormKit }  from '@formkit/vue';
     import { useRouter } from 'vue-router';
     import RouterLink from '../components/UI/RouterLink.vue';
@@ -43,8 +43,8 @@
         }
     });
 
-    const handleSubmit = (data) => {
-        axios.post(`/clientes`, data)
+    const handleSubmit = (cliente) => {
+        ClienteService.agregarCliente(cliente)
             .then(respuesta => {
                 router.push({ name: 'inicio' });
             })
