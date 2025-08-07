@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-    import axios from 'axios';
+    import axios from '../lib/axios';
     import { onMounted, ref, computed } from 'vue';
     import RouterLink from '../components/UI/RouterLink.vue';
     import Heading from '../components/UI/Heading.vue';
@@ -49,8 +49,7 @@
     const totalClientes = computed(() => clientes.value.length > 0);
 
     onMounted(() => {
-        const Api_URL = import.meta.env.VITE_API_URL;
-        axios.get(`${Api_URL}/clientes`)
+        axios.get(`/clientes`)
             .then(({ data }) => clientes.value = data)
             .catch(error => {
                 console.error('Error al obtener los datos de clientes:', error);

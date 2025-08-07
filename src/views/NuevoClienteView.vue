@@ -29,8 +29,8 @@
 </template>
 
 <script setup>
+    import axios from '../lib/axios';
     import { FormKit }  from '@formkit/vue';
-    import axios from 'axios';
     import { useRouter } from 'vue-router';
     import RouterLink from '../components/UI/RouterLink.vue';
     import Heading from '../components/UI/Heading.vue';
@@ -44,8 +44,7 @@
     });
 
     const handleSubmit = (data) => {
-        const Api_URL = import.meta.env.VITE_API_URL;
-        axios.post(`${Api_URL}/clientes`, data)
+        axios.post(`/clientes`, data)
             .then(respuesta => {
                 router.push({ name: 'inicio' });
             })
