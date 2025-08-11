@@ -50,14 +50,23 @@
     });
 
     const handleSubmit = (cliente) => {
-        
+        ClienteService.actualizarCliente(id, cliente)
+            .then(() => {
+                router.push({ name: 'inicio' });
+            })
+            .catch(error => {
+                console.error('Error al editar el cliente:', error);
+            });
     }
 
     onMounted(() => {
         ClienteService.obtenerClientePorID(id)
             .then(({ data }) => {
                 Object.assign(formData, data);
-            })
+            }).
+            catch(error => {
+                console.error('Error al obtener los datos del cliente:', error);
+            });
     })
 </script>
 
