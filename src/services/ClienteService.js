@@ -11,6 +11,6 @@ export default{
         return api.get(`/clientes/${id}`);
     },
     actualizarCliente(id, datosActualizados) {
-        return api.put(`/clientes/${id}`, datosActualizados);
+        return api.patch(`/clientes/${id}`, datosActualizados);
     }
 }
