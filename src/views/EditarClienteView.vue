@@ -29,13 +29,17 @@
 </template>
 
 <script setup>
+    import { onMounted } from 'vue';
     import ClienteService from '../services/ClienteService';
     import { FormKit }  from '@formkit/vue';
-    import { useRouter } from 'vue-router';
+    import { useRouter, useRoute } from 'vue-router';
     import RouterLink from '../components/UI/RouterLink.vue';
     import Heading from '../components/UI/Heading.vue';
 
     const router = useRouter();
+    const route = useRoute();
+
+    const { id } = route.params;
 
     defineProps({
         titulo: {
@@ -46,6 +50,13 @@
     const handleSubmit = (cliente) => {
         
     }
+
+    onMounted(() => {
+        ClienteService.obtenerClientePorID(id)
+            .then(({data}) => {
+                console.log('Cliente obtenido:', data);
+            })
+    })
 </script>
 
 <style>

@@ -2,9 +2,12 @@ import api from '../lib/axios';
 
 export default{
     obtenerClientes() {
-        return api.get('/clientes')
+        return api.get('/clientes');
     },
     agregarCliente(cliente) {
-        return api.post('/clientes', cliente)
+        return api.post('/clientes', cliente);
+    },
+    obtenerClientePorID(id){
+        return api.get(`/clientes/${id}`);
     }
 }
