@@ -19,7 +19,7 @@
                         </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 bg-white">
-                            <Cliente v-for="cliente in clientes" :key="cliente.id" :cliente="cliente"></Cliente>
+                            <Cliente v-for="cliente in clientes" :key="cliente.id" :cliente="cliente" @actualizarEstado="actualizarEstado"></Cliente>
                         </tbody>
                     </table>
                 </div>
@@ -47,6 +47,17 @@
     });
 
     const totalClientes = computed(() => clientes.value.length > 0);
+
+    const actualizarEstado = ({id, estado}) => {
+        ClienteService.cambiarEstadoCliente(id, !estado)
+            .then(() => {
+                const index = clientes.value.findIndex(cliente => cliente.id === id);
+                clientes.value[index].estado = !estado;
+            })
+            .catch(error => {
+                console.error('Error al actualizar el estado del cliente:', error);
+            });
+    }
 
     onMounted(() => {
         ClienteService.obtenerClientes()

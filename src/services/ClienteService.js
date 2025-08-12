@@ -12,5 +12,8 @@ export default{
     },
     actualizarCliente(id, datosActualizados) {
         return api.patch(`/clientes/${id}`, datosActualizados);
+    },
+    cambiarEstadoCliente(id, estado) {
+        return api.patch(`/clientes/${id}`, { estado });
     }
 }
