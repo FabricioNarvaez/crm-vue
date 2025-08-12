@@ -19,7 +19,8 @@
                         </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 bg-white">
-                            <Cliente v-for="cliente in clientes" :key="cliente.id" :cliente="cliente" @actualizarEstado="actualizarEstado"></Cliente>
+                            <Cliente v-for="cliente in clientes" :key="cliente.id" :cliente="cliente"
+                            @actualizarEstado="actualizarEstado" @eliminarCliente="eliminarCliente"></Cliente>
                         </tbody>
                     </table>
                 </div>
@@ -56,6 +57,16 @@
             })
             .catch(error => {
                 console.error('Error al actualizar el estado del cliente:', error);
+            });
+    }
+
+    const eliminarCliente = (id) => {
+        ClienteService.eliminarCliente(id)
+            .then(() => {
+                clientes.value = clientes.value.filter(cliente => cliente.id !== id);
+            })
+            .catch(error => {
+                console.error('Error al eliminar el cliente:', error);
             });
     }
 

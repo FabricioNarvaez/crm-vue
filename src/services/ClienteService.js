@@ -15,5 +15,8 @@ export default{
     },
     cambiarEstadoCliente(id, estado) {
         return api.patch(`/clientes/${id}`, { estado });
+    },
+    eliminarCliente(id) {
+        return api.delete(`/clientes/${id}`);
     }
 }
